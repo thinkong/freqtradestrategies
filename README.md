@@ -1,0 +1,2 @@
+# freqtradestrategies
+Collection of strategies
