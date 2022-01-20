@@ -45,7 +45,7 @@ jobs:
         with:
           log-variables: true
           path:
-            "./strategies_5m"
+            strategies_5m_${{matrix.timeframe}}.env
       - uses: actions/checkout@v2.4.0
         with:
           submodules: true
