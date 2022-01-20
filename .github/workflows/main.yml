@@ -54,4 +54,5 @@ jobs:
           TIME_FRAME: ${{ matrix.timeframe}}
           TIMERANGE: ${{ matrix.timerange }}
           EXCHANGE: ${{ matrix.exchange }}
+          STRATEGYLIST: ${{ steps.strategylist.output.STRATEGYLIST}}
         run: docker-compose up
