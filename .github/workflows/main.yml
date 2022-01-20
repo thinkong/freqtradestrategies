@@ -39,13 +39,13 @@ jobs:
         timeframe:
           - 5m
     steps:
-      - name: Binance Backtesting Variables
-        id: binance-dates
+      - name: Strategy Lists to be tested in ${{matrix.timeframe}}
+        id: strategylist
         uses: falti/dotenv-action@v0.2.6
         with:
           log-variables: true
           path:
-            strategies_5m/strategylist.env
+            ./strategies_5m/strategylist.env
       - uses: actions/checkout@v2.4.0
         with:
           submodules: true
