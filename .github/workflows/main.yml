@@ -45,7 +45,7 @@ jobs:
         with:
           log-variables: true
           path:
-            ./strategies_5m/strategylist.env
+            "./strategies_5m/strategylist.env"
       - uses: actions/checkout@v2.4.0
         with:
           submodules: true
