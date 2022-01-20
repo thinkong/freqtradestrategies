@@ -20,4 +20,4 @@ services:
       --max-open-trades ${MAX_OPEN_TRADES:-5}
       --timerange ${TIMERANGE}
       --enable-protections
-      --i ${TIME_FRAME:-5m}
+      --timeframe ${TIME_FRAME:-5m}
