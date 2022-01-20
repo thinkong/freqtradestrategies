@@ -36,7 +36,7 @@ jobs:
         exchange:
           - binance
           - kucoin
-  steps:
-    - uses: actions/checkout@v2.4.0
-      with:
-        submodules: true
+    steps:
+      - uses: actions/checkout@v2.4.0
+        with:
+          submodules: true
