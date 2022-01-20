@@ -39,6 +39,9 @@ jobs:
         timeframe:
           - 5m
     steps:
+      - uses: actions/checkout@v2.4.0
+        with:
+          submodules: true
       - name: Strategy Lists to be tested in ${{matrix.timeframe}}
         id: strategylist
         uses: falti/dotenv-action@v0.2.7
@@ -46,9 +49,6 @@ jobs:
           log-variables: true
           path:
             strategylist_${{matrix.timeframe}}.env
-      - uses: actions/checkout@v2.4.0
-        with:
-          submodules: true
       - name: run backtests
         env:
           TIME_FRAME: ${{ matrix.timeframe}}
