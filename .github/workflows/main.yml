@@ -49,10 +49,12 @@ jobs:
           log-variables: true
           path:
             strategylist_${{matrix.timeframe}}.env
+      - name: echo v
+        run: echo ${{ steps.strategylist.output.strategylist}}
       - name: run backtests
-        env: ${{ steps.strategylist.output.strategylist}}
+        env:
           TIME_FRAME: ${{ matrix.timeframe}}
           TIMERANGE: ${{ matrix.timerange }}
           EXCHANGE: ${{ matrix.exchange }}
-          STRATEGYLIST: ${{ steps.strategylist.output.strategylist}}
+          STRATEGYLIST: ${{ steps.strategylist.output.STRATEGYLIST}}
         run: docker-compose up
