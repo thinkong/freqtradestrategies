@@ -18,5 +18,4 @@ services:
       --strategy-list SampleStrategy
       --stake-amount ${STAKE_AMOUNT:-unlimited}
       --max-open-trades ${MAX_OPEN_TRADES:-5}
-      --no-cache
       --timerange ${TIMERANGE}
