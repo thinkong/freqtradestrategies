@@ -17,6 +17,11 @@ All Strategies go into their respecting timeframe folder as follows
 
 If your strategy file somehow has strategies with mixed timeframes, please split it up or add them to both folders. 
 
+## How to contribute
+
+You can add your strategy in the corresponding timeframe folder mentioned above. Then add your strategy in the strategy_<timeframe>.env file. Create a pull request. 
+
+Please create an issue if you are using something other than the provided timeframe or something more than the freqtrade:develop tree.
 
 ## Note To Self
 
