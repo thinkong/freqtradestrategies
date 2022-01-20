@@ -3,7 +3,7 @@ version: '3'
 services:
   freqtrade:
     image: freqtradeorg/freqtrade:develop
-    restart: no
+    restart: "no"
     container_name: freqtrade
     volumes:
       - "./user_data:/freqtrade/user_data"
