@@ -3,7 +3,7 @@ version: '3'
 services:
   freqtrade:
     image: freqtradeorg/freqtrade:develop
-    restart: unless-stopped
+    restart: no
     container_name: freqtrade
     volumes:
       - "./user_data:/freqtrade/user_data"
@@ -19,3 +19,5 @@ services:
       --stake-amount ${STAKE_AMOUNT:-unlimited}
       --max-open-trades ${MAX_OPEN_TRADES:-5}
       --timerange ${TIMERANGE}
+      --enable-protections
+      --i ${TIME_FRAME:-5m}

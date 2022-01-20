@@ -9,6 +9,7 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  com
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -36,13 +37,22 @@ jobs:
         exchange:
           - binance
           - kucoin
+        timeframe:
+          - 5m
     steps:
+      - name: Binance Backtesting Variables
+        id: binance-dates
+        uses: falti/dotenv-action@v0.2.6
+        with:
+          log-variables: true
+          path:
+            strategies_${{ matrix.timeframe}}/strategylist.env
       - uses: actions/checkout@v2.4.0
         with:
           submodules: true
       - name: run backtests
         env:
-          TIME_FRAME: 5m
+          TIME_FRAME: ${{ matrix.timeframe}}
           TIMERANGE: ${{ matrix.timerange }}
           EXCHANGE: ${{ matrix.exchange }}
         run: docker-compose up
