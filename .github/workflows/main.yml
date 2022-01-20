@@ -41,7 +41,7 @@ jobs:
     steps:
       - name: Strategy Lists to be tested in ${{matrix.timeframe}}
         id: strategylist
-        uses: falti/dotenv-action@v0.2.6
+        uses: falti/dotenv-action@v0.2.7
         with:
           log-variables: true
           path:
