@@ -43,4 +43,6 @@ jobs:
       - name: run backtests
         env:
           TIME_FRAME: 5m
+          TIMERANGE: ${{ matrix.timerange }}
+          EXCHANGE: ${{ matrix.exchange }}
         run: docker-compose up
