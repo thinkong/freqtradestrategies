@@ -43,6 +43,13 @@ jobs:
       - uses: actions/checkout@v2.4.0
         with:
           submodules: true
+      -uses: dorny/paths-filter@v2
+        id: changes
+        with:
+          filters: |
+            src:
+              -'user_data/strategies/**'
+              -*.env'
       - name: Strategy Lists to be tested in ${{matrix.timeframe}}
         id: strategylist
         uses: falti/dotenv-action@v0.2.7
@@ -51,6 +58,7 @@ jobs:
           path:
             strategylist_${{matrix.timeframe}}.env
       - name: run backtests
+        if: steps.changes.outputs.src == 'true'
         env:
           TIME_FRAME: ${{ matrix.timeframe}}
           TIMERANGE: ${{ matrix.timerange }}
