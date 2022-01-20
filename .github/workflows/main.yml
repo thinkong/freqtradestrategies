@@ -40,3 +40,5 @@ jobs:
       - uses: actions/checkout@v2.4.0
         with:
           submodules: true
+      - name: echo config
+        run: echo ${{ matrix.timerange }} echo ${{matrix.exchange}}
