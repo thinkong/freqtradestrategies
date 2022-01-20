@@ -7,12 +7,16 @@ services:
     container_name: freqtrade
     volumes:
       - "./user_data:/freqtrade/user_data"
+      - "./strategies_${TIME_FRAME-5m}:/freqtrade/user_data/strategies"
     ports:
       - "127.0.0.1:8080:8080"
     # Default command used when running `docker compose up`
     command: >
-      trade
-      --logfile /freqtrade/user_data/logs/freqtrade.log
-      --db-url sqlite:////freqtrade/user_data/tradesv3.sqlite
-      --config /freqtrade/user_data/config.json
-      --strategy SampleStrategy
+      backtesting
+      --config user_data/data/pairlists.json
+      --config user_data/data/${EXCHANGE:-binance}-usdt-static.json
+      --strategy-list SampleStrategy
+      --stake-amount ${STAKE_AMOUNT:-unlimited}
+      --max-open-trades ${MAX_OPEN_TRADES:-5}
+      --no-cache
+      --timerange ${TIMERANGE}
