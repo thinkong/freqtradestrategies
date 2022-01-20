@@ -38,6 +38,7 @@ jobs:
           - kucoin
         timeframe:
           - 5m
+          - 15m
     steps:
       - uses: actions/checkout@v2.4.0
         with:
@@ -49,8 +50,6 @@ jobs:
           log-variables: true
           path:
             strategylist_${{matrix.timeframe}}.env
-      - name: echo v
-        run: echo ${{ steps.strategylist.outputs.strategylist}}
       - name: run backtests
         env:
           TIME_FRAME: ${{ matrix.timeframe}}
@@ -58,3 +57,4 @@ jobs:
           EXCHANGE: ${{ matrix.exchange }}
           STRATEGYLIST: ${{ steps.strategylist.outputs.STRATEGYLIST}}
         run: docker-compose up
+# add some things to update a results file.. ?

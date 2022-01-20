@@ -7,7 +7,6 @@ services:
     container_name: freqtrade
     volumes:
       - "./user_data:/freqtrade/user_data"
-      - "./strategies_${TIME_FRAME-5m}:/freqtrade/user_data/strategies"
     ports:
       - "127.0.0.1:8080:8080"
     # Default command used when running `docker compose up`
