@@ -49,8 +49,6 @@ jobs:
           log-variables: true
           path:
             strategylist_${{matrix.timeframe}}.env
-      - name: echo v
-        run: echo 
       - name: run backtests
         env: ${{ steps.strategylist.output.strategylist}}
           TIME_FRAME: ${{ matrix.timeframe}}
