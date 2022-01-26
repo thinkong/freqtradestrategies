@@ -46,7 +46,7 @@ jobs:
       - name: Remove File
         uses: JesseTG/rm@v1.0.2
         with:
-          path: results/*.*
+          path: results/
       - run: ls -R
       - name: Use Nodejs
         uses: actions/setup-node@v2
@@ -77,7 +77,7 @@ jobs:
         working-directory: tools
       
       - run: ls -R
-      
+
       # - uses: EndBug/add-and-commit@v8
       #   with:
       #     add: 'results'
