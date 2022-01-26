@@ -97,8 +97,8 @@ jobs:
       - run: rm -rf results
       - name: Download all artifact
         uses: actions/download-artifact@v2
-        with:
-          path: user_data
+        # with:
+        #   path: .
       - uses: EndBug/add-and-commit@v8
         with:
           add: 'results'
