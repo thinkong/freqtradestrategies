@@ -44,7 +44,7 @@ jobs:
         with:
           submodules: true
       - name: Remove File
-        run: rm -rf results/*.*
+        run: rm -rf results/*.md
       - run: ls -R
       - name: Use Nodejs
         uses: actions/setup-node@v2
