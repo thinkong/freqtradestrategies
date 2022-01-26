@@ -46,7 +46,8 @@ jobs:
       - name: Remove File
         uses: JesseTG/rm@v1.0.2
         with:
-          path: results/*
+          path: results/*.*
+      - run: ls -R
       - name: Use Nodejs
         uses: actions/setup-node@v2
         with:
@@ -74,6 +75,9 @@ jobs:
         run: docker-compose up
       - run: node index.js -o ../results -b ../user_data/backtest_results -e ${{ matrix.exchange }} -t ${{ matrix.timeframe}} -r ${{ matrix.timerange }}
         working-directory: tools
+      
+      - run: ls -R
+      
       # - uses: EndBug/add-and-commit@v8
       #   with:
       #     add: 'results'
