@@ -72,6 +72,7 @@ jobs:
           STRATEGYLIST: ${{ steps.strategylist.outputs.STRATEGYLIST}}
         run: docker-compose up
       - run: node index.js -o ../outputs -b ../user_data/backtest_results -e ${{ matrix.exchange }} -t ${{ matrix.timeframe}} -r ${{ matrix.timerange }}
+        working-directory: tools
       - uses: EndBug/add-and-commit@v8
         with:
           add: 'output'
