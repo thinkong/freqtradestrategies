@@ -80,11 +80,17 @@ jobs:
       #   with:
       #     add: 'results'
       #     pull: '--rebase --autostash'
-      - name: upload logs as artifacts
+      - name: upload md as artifacts
         uses: actions/upload-artifact@v2
         with:
           name: results
           path: results
+          retention-days: 1
+      - name: upload logs as artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: logs
+          path: user_data/backtest_results
           retention-days: 1
 
   Backtest-CI-Stats:
@@ -97,8 +103,8 @@ jobs:
       - run: rm -rf results
       - name: Download all artifact
         uses: actions/download-artifact@v2
-        # with:
-        #   path: .
+          with:
+            name: results
       - uses: EndBug/add-and-commit@v8
         with:
           add: 'results'
