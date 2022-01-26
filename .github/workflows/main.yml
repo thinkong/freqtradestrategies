@@ -39,6 +39,7 @@ jobs:
         timeframe:
           - 5m
           - 15m
+          - 1h
     steps:
       - uses: actions/checkout@v2.4.0
         with:
