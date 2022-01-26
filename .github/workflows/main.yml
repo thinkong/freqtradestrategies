@@ -75,16 +75,16 @@ jobs:
         run: docker-compose up
       - run: node index.js -o ../results -b ../user_data/backtest_results -e ${{ matrix.exchange }} -t ${{ matrix.timeframe}} -r ${{ matrix.timerange }}
         working-directory: tools
-      - uses: EndBug/add-and-commit@v8
-        with:
-          add: 'results'
-          pull: '--rebase --autostash'
-      # - name: upload logs as artifacts
-      #   uses: actions/upload-artifact@v2
+      # - uses: EndBug/add-and-commit@v8
       #   with:
-      #     name: ${{matrix.exchange}}-${{matrix.timeframe}}-${{ matrix.timerange }}-backtest-data
-      #     path: outputs/*.md
-      #     retention-days: 7
+      #     add: 'results'
+      #     pull: '--rebase --autostash'
+      - name: upload logs as artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{matrix.exchange}}
+          path: results/*.md
+          retention-days: 1
 
   Backtest-CI-Stats:
     runs-on: ubuntu-latest
@@ -97,6 +97,6 @@ jobs:
       - name: Download all artifact
         uses: actions/download-artifact@v2
         with:
-          path: user_data/backtest_results
+          path: user_data/results
       - run: ls -R
 # add some things to update a results file.. ?
