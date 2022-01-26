@@ -48,8 +48,9 @@ jobs:
         with:
           filters: |
             src:
-              -'user_data/strategies/**'
-              -*.env'
+              -user_data/strategies/**
+              -*.env
+              -.github/workflows/**
       - name: Strategy Lists to be tested in ${{matrix.timeframe}}
         id: strategylist
         uses: falti/dotenv-action@v0.2.7
