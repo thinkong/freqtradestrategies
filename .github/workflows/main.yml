@@ -72,12 +72,15 @@ jobs:
           STRATEGYLIST: ${{ steps.strategylist.outputs.STRATEGYLIST}}
         run: docker-compose up
       - run: node index.js -o ../outputs -b ../user_data/backtest_results -e ${{ matrix.exchange }} -t ${{ matrix.timeframe}} -r ${{ matrix.timerange }}
-      - name: upload logs as artifacts
-        uses: actions/upload-artifact@v2
+      - uses: EndBug/add-and-commit@v8
         with:
-          name: ${{matrix.exchange}}-${{matrix.timeframe}}-${{ matrix.timerange }}-backtest-data
-          path: outputs/*.md
-          retention-days: 7
+          add: 'output'
+      # - name: upload logs as artifacts
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: ${{matrix.exchange}}-${{matrix.timeframe}}-${{ matrix.timerange }}-backtest-data
+      #     path: outputs/*.md
+      #     retention-days: 7
 
   Backtest-CI-Stats:
     runs-on: ubuntu-latest
