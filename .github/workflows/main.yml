@@ -79,7 +79,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ${{matrix.exchange}}
-          path: results/*.md
+          path: results
           retention-days: 1
 
   Backtest-CI-Stats:
