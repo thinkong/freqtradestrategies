@@ -16,14 +16,14 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  Pre-Commit:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2.4.0
+  # Pre-Commit:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2.4.0
   Backtests:
     runs-on: ubuntu-latest
-    needs:
-      - Pre-Commit
+    # needs:
+    #   - Pre-Commit
     strategy:
       fail-fast: false
       matrix:
@@ -65,4 +65,18 @@ jobs:
           EXCHANGE: ${{ matrix.exchange }}
           STRATEGYLIST: ${{ steps.strategylist.outputs.STRATEGYLIST}}
         run: docker-compose up
+      - name: upload logs as artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{matrix.timeframe}}-backtest-data
+          path: user_data/backtest_results/*.json
+          retention-days: 7
+  Backtest-CI-Stats:
+    runs-on: ubuntu-latest
+    needs: 
+      - Backtests
+    steps:
+      - uses: actions/checkout@v2.4.0
+      - name: Download all artifact
+        uses: actions/download-artifact@v2
 # add some things to update a results file.. ?

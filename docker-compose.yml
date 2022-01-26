@@ -20,3 +20,5 @@ services:
       --timerange ${TIMERANGE}
       --enable-protections
       --timeframe ${TIME_FRAME:-5m}
+      --export trades
+      --export-filename user_data/backtest_results/${TIMERANGE:-5m}.json
