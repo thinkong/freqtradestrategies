@@ -48,14 +48,14 @@ function calculateWinRate(p) {
 var jsonKeyToTablename = [
     { jsonkey: 'key', tablename: 'Strategy Name', type: 'string' },
     { jsonkey: 'duration_avg', tablename: 'Average Duration', type: 'string' },
-    { jsonkey: 'max_drawdown_per', tablename: 'Max Drawdonw', type: 'pct' },
+    { jsonkey: 'max_drawdown_per', tablename: 'Max Drawdown', type: 'pct' },
     { jsonkey: 'profit_mean_pct', tablename: 'Profit Mean', type: 'pct' },
     { jsonkey: 'profit_sum_pct', tablename: 'Profit Sum', type: 'pct' },
     { jsonkey: 'profit_total_pct', tablename: 'Profit Total', type: 'pct' },
     { jsonkey: 'trades', tablename: 'Trade Count', type: 'integer' },
     { jsonkey: 'win_rate', tablename: 'Win Rate', type: 'function', calfunc: calculateWinRate, parameters: ['wins', 'losses', 'draws'] }
 ];
-var tableData = [['Strategy Name', 'Average Duration', 'Max Drawdonw', 'Profit Mean', 'Profit Sum', 'Profit Total', 'Trade Count', 'Win Rate']];
+var tableData = [['Strategy Name', 'Average Duration', 'Max Drawdown', 'Profit Mean', 'Profit Sum', 'Profit Total', 'Trade Count', 'Win Rate']];
 var comparisonKeys = tableData[0];
 for (var data of backtestData.strategy_comparison) {
     var tmpTableData = [];
@@ -64,7 +64,11 @@ for (var data of backtestData.strategy_comparison) {
         var keytotable = jsonKeyToTablename.find(element => element.tablename == columnName);
         switch (keytotable.type) {
             case 'pct':
-                tmpTableData.push((data[keytotable.jsonkey] * 100).toFixed(2) + '%')
+                if (data[keytotable.jsonkey] != undefined) {
+                    tmpTableData.push((data[keytotable.jsonkey] * 100).toFixed(2) + '%')
+                } else {
+                    tmpTableData.push('0%')
+                }
                 break;
             case 'function':
                 var parameters = [];
