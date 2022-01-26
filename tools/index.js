@@ -48,7 +48,7 @@ function calculateWinRate(p) {
 var jsonKeyToTablename = [
     { jsonkey: 'key', tablename: 'Strategy Name', type: 'string' },
     { jsonkey: 'duration_avg', tablename: 'Average Duration', type: 'string' },
-    { jsonkey: 'max_drawdown_per', tablename: 'Max Drawdown', type: 'pct' },
+    { jsonkey: 'max_drawdown_account', tablename: 'Max Drawdown', type: 'pct' },
     { jsonkey: 'profit_mean_pct', tablename: 'Profit Mean', type: 'pct' },
     { jsonkey: 'profit_sum_pct', tablename: 'Profit Sum', type: 'pct' },
     { jsonkey: 'profit_total_pct', tablename: 'Profit Total', type: 'pct' },
