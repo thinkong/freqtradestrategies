@@ -98,5 +98,9 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           path: user_data/results
-      - run: ls -R
+      - uses: EndBug/add-and-commit@v8
+        with:
+          add: 'results'
+          #pull: '--rebase --autostash'
+      #- run: ls -R
 # add some things to update a results file.. ?
