@@ -25,11 +25,8 @@ Backtesting data is from [NFI](https://github.com/iterativv/NostalgiaForInfinity
 
 Please note that strategy name doesn't always mean the file name. If the file name doesn't match, you will have to search the strategy folder for the strategy file.
 
-### 5m
-| Strategy Name | Average Duration | Max Drawdonw | Profit Mean | Profit Sum | Profit Total | Trade Count | Win Rate |
-| ------------- | ---------------- | ------------ | ----------- | ---------- | ------------ | ----------- | -------- |
-| BB_RPB_TSL_BI | 0:10:00          | 0.00%        | 195.45%     | 195.00%    | 196.00%      | 1           | 100.00%  |
-| botbaby       | 1:10:00          | 2065.00%     | -10.64%     | -1053.00%  | -1035.00%    | 99          | 37.37%   |
+I am still looking for a way to add the results here.. Until then you can check the results in the [results folder](https://github.com/thinkong/freqtradestrategies/tree/main/results)
+
 ## Time ranges
 
 Time ranges per trend is as follows.

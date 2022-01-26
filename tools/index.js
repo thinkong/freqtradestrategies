@@ -1,26 +1,21 @@
 import fs from 'fs';
 import yargs from 'yargs';
-import { hideBin } from 'yargs/helpers'
+import { hideBin } from 'yargs/helpers';
 import { markdownTable } from 'markdown-table';
 import upath from 'upath';
+import {EOL} from 'os';
 
 const args = yargs(hideBin(process.argv))
-    .option('input', {
-        alias: 'i',
-        type: 'string',
-        default: '../.github/README_Template.md',
-        description: 'input file name'
-    })
     .option('outputpath', {
         alias: 'o',
         type: 'string',
-        default: '../outputs',
+        default: '../results',
         description: 'output file name'
     })
-    .option('backtestfile', {
+    .option('backtestpath', {
         alias: 'b',
         type: 'string',
-        default: '../user_data/backtest_results/backtest-result-2022-01-21_02-38-31.json',
+        default: '../user_data/backtest_results',
         description: 'freqtrade backtest result file'
     })
     .option('timeframe', {
@@ -29,9 +24,24 @@ const args = yargs(hideBin(process.argv))
         default:'5m',
         description: 'timeframe this backtest data has been run on'
     })
+    .option('exchange',{
+        alias:'e',
+        type:'string',
+        default:'binance',
+        description: 'exchange this backtest data has been run on'
+    })
+    .option('timerange',{
+        alias:'r',
+        type:'string',
+        default:'10000101-99991231',
+        description: 'timerange this backtest data has been run on'
+    })
     .parse();
+var backtestlatestfilepath = upath.join(args.backtestpath, '.last_result.json');
+var latestJson = JSON.parse(fs.readFileSync(backtestlatestfilepath));
+var backtestfile = latestJson.latest_backtest;
 
-var backtestData = JSON.parse(fs.readFileSync(args.backtestfile));
+var backtestData = JSON.parse(fs.readFileSync(upath.join(args.backtestpath, backtestfile)));
 function calculateWinRate(p) {
     return p[0] / (p[0] + p[1] + p[2]);
 };
@@ -71,11 +81,7 @@ for (var data of backtestData.strategy_comparison) {
     tableData.push(tmpTableData);
 }
 var table1 = markdownTable(tableData);
-
-// var filedata = fs.readFileSync(args.input);
-
-// let re = new RegExp('\[\[' + args.timeframe+ '\]\]', 'g');
-// var OK = re.exec(filedata.toString());
-// var out = filedata.toString().replace(re, table1);
-var outputfilepath = upath.join(args.outputpath, args.timeframe + '.md');//new URL(args.outputpath + '/' + args.timeframe + '.md', import.meta.url).pathname;
-fs.writeFileSync(outputfilepath, table1, { flag:'w'});
+var mdheader = '#### ' + args.exchange + ' ' + args.timeframe + ' ' + args.timerange + ' !heading' + EOL;
+var filename = args.exchange + '-' + args.timeframe + '-' + args.timerange + '.md' 
+var outputfilepath = upath.join(args.outputpath, filename);
+fs.writeFileSync(outputfilepath, mdheader + table1, { flag:'w'});
