@@ -69,7 +69,7 @@ jobs:
       - name: upload logs as artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: ${{matrix.timeframe}}-backtest-data
+          name: ${{matrix.exchange}}-${{matrix.timeframe}}-${{ matrix.timerange }}-backtest-data
           path: user_data/backtest_results/*.json
           retention-days: 7
   Backtest-CI-Stats:

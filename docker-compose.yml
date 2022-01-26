@@ -14,11 +14,11 @@ services:
       backtesting
       --config user_data/data/pairlists.json
       --config user_data/data/${EXCHANGE:-binance}-usdt-static.json
-      --strategy-list ${STRATEGYLIST:-SampleStrategy}
+      --strategy-list ${STRATEGYLIST}
       --stake-amount ${STAKE_AMOUNT:-unlimited}
       --max-open-trades ${MAX_OPEN_TRADES:-5}
       --timerange ${TIMERANGE}
       --enable-protections
       --timeframe ${TIME_FRAME:-5m}
       --export trades
-      --export-filename user_data/backtest_results/${TIMERANGE:-5m}.json
+      --export-filename user_data/backtest_results/${EXCHANGE:-binance}-${TIME_FRAME:-5m}-${TIMERANGE}.json
