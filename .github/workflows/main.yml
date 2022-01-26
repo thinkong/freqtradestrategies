@@ -78,7 +78,7 @@ jobs:
       - uses: EndBug/add-and-commit@v8
         with:
           add: 'results'
-          pull: '--rebase --autostash ...'
+          pull: '--rebase --autostash'
       # - name: upload logs as artifacts
       #   uses: actions/upload-artifact@v2
       #   with:
