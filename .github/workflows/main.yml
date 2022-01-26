@@ -44,9 +44,7 @@ jobs:
         with:
           submodules: true
       - name: Remove File
-        uses: JesseTG/rm@v1.0.2
-        with:
-          path: results/
+        run: rm -rf results/*.*
       - run: ls -R
       - name: Use Nodejs
         uses: actions/setup-node@v2
