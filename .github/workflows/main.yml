@@ -83,7 +83,7 @@ jobs:
       - name: upload logs as artifacts
         uses: actions/upload-artifact@v2
         with:
-          name: ${{matrix.exchange}}
+          name: results
           path: results
           retention-days: 1
 
@@ -94,11 +94,11 @@ jobs:
     steps:
 
       - uses: actions/checkout@v2.4.0
-      - run: rm -rf results/*.*
+      - run: rm -rf results
       - name: Download all artifact
         uses: actions/download-artifact@v2
         with:
-          path: user_data/results
+          path: user_data
       - uses: EndBug/add-and-commit@v8
         with:
           add: 'results'
