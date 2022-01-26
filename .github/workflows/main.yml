@@ -79,9 +79,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2.4.0
       - run: ls -R
-      - uses: actions/download-artifact@v2
+      - name: Download all artifact
+        uses: actions/download-artifact@v2
         with:
-          name: Download all artifact
           path: user_data/backtest_results
       - run: ls -R
 # add some things to update a results file.. ?
