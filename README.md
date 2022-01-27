@@ -3,7 +3,6 @@
   * [Summary](#summary)
   * [Organization](#organization)
   * [Results](#results)
-    * [5m](#5m)
   * [Time ranges](#time-ranges)
   * [How to contribute](#how-to-contribute)
 
