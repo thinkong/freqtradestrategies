@@ -42,6 +42,10 @@ jobs:
           - 15m
           - 1h
     steps:
+      - name: Set Swap Space
+        uses: pierotofy/set-swap-space@master
+        with:
+          swap-size-gb: 10
       - uses: actions/checkout@v2.4.0
         with:
           submodules: true
