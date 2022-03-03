@@ -17,6 +17,7 @@ logger = logging.getLogger(__name__)
 
 class YourStrat(IStrategy):
     # replace this by your strategy
+    print("YourStrat")
 
 class TrailingBuyStrat(YourStrat):
     # Orignal idea by @MukavaValkku, code by @tirail and @stash86
