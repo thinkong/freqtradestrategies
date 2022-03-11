@@ -39,8 +39,9 @@ jobs:
         timeframe:
           - 1m
           - 5m
-          - 15m
-          - 1h
+          # Currently no strats here....
+          # - 15m
+          # - 1h
     steps:
       - name: Set Swap Space
         uses: pierotofy/set-swap-space@master
