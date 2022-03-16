@@ -49,13 +49,13 @@ var jsonKeyToTablename = [
     { jsonkey: 'key', tablename: 'Strategy Name', type: 'string' },
     { jsonkey: 'duration_avg', tablename: 'Average Duration', type: 'string' },
     { jsonkey: 'max_drawdown_account', tablename: 'Max Drawdown', type: 'pct' },
-    { jsonkey: 'profit_mean_pct', tablename: 'Average Profiit', type: 'pct' },
+    { jsonkey: 'profit_mean_pct', tablename: 'Average Profit', type: 'pct' },
     { jsonkey: 'profit_sum_pct', tablename: 'Cum Profit', type: 'pct' },
     { jsonkey: 'profit_total_pct', tablename: 'Tot Profit USDT', type: 'integer' },
     { jsonkey: 'trades', tablename: 'Trade Count', type: 'integer' },
     { jsonkey: 'win_rate', tablename: 'Win Rate', type: 'function', calfunc: calculateWinRate, parameters: ['wins', 'losses', 'draws'] }
 ];
-var tableData = [['Strategy Name', 'Average Duration', 'Max Drawdown', 'Profit Mean', 'Profit Sum', 'Profit Total', 'Trade Count', 'Win Rate']];
+var tableData = [['Strategy Name', 'Average Duration', 'Max Drawdown', 'Average Profit', 'Cum Profit', 'Tot Profit USDT', 'Trade Count', 'Win Rate']];
 var comparisonKeys = tableData[0];
 for (var data of backtestData.strategy_comparison) {
     var tmpTableData = [];
