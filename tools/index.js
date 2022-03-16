@@ -49,9 +49,9 @@ var jsonKeyToTablename = [
     { jsonkey: 'key', tablename: 'Strategy Name', type: 'string' },
     { jsonkey: 'duration_avg', tablename: 'Average Duration', type: 'string' },
     { jsonkey: 'max_drawdown_account', tablename: 'Max Drawdown', type: 'pct' },
-    { jsonkey: 'profit_mean_pct', tablename: 'Profit Mean', type: 'pct' },
-    { jsonkey: 'profit_sum_pct', tablename: 'Profit Sum', type: 'pct' },
-    { jsonkey: 'profit_total_pct', tablename: 'Profit Total', type: 'pct' },
+    { jsonkey: 'profit_mean_pct', tablename: 'Average Profiit', type: 'pct' },
+    { jsonkey: 'profit_sum_pct', tablename: 'Cum Profit', type: 'pct' },
+    { jsonkey: 'profit_total_pct', tablename: 'Tot Profit USDT', type: 'integer' },
     { jsonkey: 'trades', tablename: 'Trade Count', type: 'integer' },
     { jsonkey: 'win_rate', tablename: 'Win Rate', type: 'function', calfunc: calculateWinRate, parameters: ['wins', 'losses', 'draws'] }
 ];
@@ -65,7 +65,7 @@ for (var data of backtestData.strategy_comparison) {
         switch (keytotable.type) {
             case 'pct':
                 if (data[keytotable.jsonkey] != undefined) {
-                    tmpTableData.push((data[keytotable.jsonkey] * 100).toFixed(2) + '%')
+                    tmpTableData.push((data[keytotable.jsonkey]).toFixed(2) + '%')
                 } else {
                     tmpTableData.push('0%')
                 }
