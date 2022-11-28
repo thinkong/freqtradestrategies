@@ -35,7 +35,7 @@ jobs:
           - 20210425-20210610
         exchange:
           - binance
-          - kucoin
+          # - kucoin
         timeframe:
           - 1m
           - 5m
